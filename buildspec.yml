@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - aws codeartifact login --tool npm --repository $REPOSITORY --domain $DOMAIN --domain-owner $DOMAIN_OWNER --region $REGION
+  build:
+    commands:
+      - npm install
+      - ls -l
+      - npm run-script deploy
+      - 
+  post_build:
+    commands:
+      - ls -l
